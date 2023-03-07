@@ -3,6 +3,7 @@ import { Database } from './boundaries/database';
 import { environment, whichEnv } from './boundaries/environment';
 import { logger } from './boundaries/logger';
 import { locationController } from './controllers/locations';
+import { unitController } from './controllers/units';
 import { initMonumentDBModels } from './models';
 
 let MonumentDB: Database;
@@ -16,6 +17,7 @@ export const createApp = async () => {
 
   // Register Controllers here
   server.registerController('/locations', locationController);
+  server.registerController('/units', unitController);
 
   await server.registerStatic(whichEnv() === 'sandbox');
   server.registerApiCatch();
