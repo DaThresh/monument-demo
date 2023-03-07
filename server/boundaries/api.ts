@@ -42,11 +42,14 @@ class Server {
       this.express.use(webpackHotMiddleware(webpackCompiler));
       this.express.get('/(.*)', async (request, response) => {
         const indexPath = `${webpackConfig.output?.path}/index.html`;
-        const index = await webpackCompiler.outputFileSystem.readFile(indexPath, (error) => {
-          logger.error('Error when serving HMR file').error(error?.stack);
+        webpackCompiler.outputFileSystem.readFile(indexPath, (error, file) => {
+          if (error) {
+            logger.error('Error when serving HMR file').error(error?.stack);
+          } else {
+            response.type('text/html').send(file).end();
+            logger.http(`Delivered app to ${request.ip}`);
+          }
         });
-        response.type('text/html').send(index).end();
-        logger.http(`Delivered app to ${request.ip}`);
       });
     } else {
       this.express.use(express.static(`${__dirname}/../../public`));
