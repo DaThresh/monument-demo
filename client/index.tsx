@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
 import 'bulma';
+import { ModalContextProvider } from './common/contexts/modal';
 import { ToastContextProvider } from './common/contexts/toast';
 
 const rootElement = document.createElement('div');
@@ -14,7 +15,9 @@ render(
   <React.StrictMode>
     <BrowserRouter>
       <ToastContextProvider>
-        <App />
+        <ModalContextProvider>
+          <App />
+        </ModalContextProvider>
       </ToastContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
