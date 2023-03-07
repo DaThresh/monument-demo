@@ -1,5 +1,5 @@
 import { CreateLocation, LocationById } from '@shared/interfaces/locations';
-import { object, ObjectSchema, string } from 'yup';
+import { number, object, ObjectSchema, string } from 'yup';
 
 export const createLocationSchema: ObjectSchema<CreateLocation.Body> = object({
   name: string().required(),
@@ -10,5 +10,5 @@ export const createLocationSchema: ObjectSchema<CreateLocation.Body> = object({
 });
 
 export const locationByIdSchema: ObjectSchema<LocationById.Params> = object({
-  locationId: string().required(),
+  locationId: number().required(),
 });

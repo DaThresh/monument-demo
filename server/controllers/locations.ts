@@ -1,9 +1,17 @@
-import { Location } from '../models';
+import { Location, Unit } from '../models';
 import { NotFoundError } from '../utilities/errors';
 import { Controller } from './controller';
 import { createLocationSchema, locationByIdSchema } from './schemas/location';
 
 const locationController = new Controller();
+
+locationController.createEndpoint({
+  method: 'GET',
+  route: '/:locationId/units',
+  successCode: 200,
+  inputSchemas: { ...Controller.defaultInputSchema, params: locationByIdSchema },
+  callback: async ({ params }) => Unit.findAll({ where: { locationId: params.locationId } }),
+});
 
 locationController.createEndpoint({
   method: 'GET',

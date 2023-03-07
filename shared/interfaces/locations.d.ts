@@ -6,7 +6,7 @@ export namespace Locations {
 
 export namespace LocationById {
   export interface Params {
-    locationId: string;
+    locationId: number;
   }
   export type Response = LocationData;
 }
