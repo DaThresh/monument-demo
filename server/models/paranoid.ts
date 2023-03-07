@@ -19,15 +19,15 @@ export class Paranoid<
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: () => new Date(),
     },
     updatedAt: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: false,
     },
     deletedAt: {
       type: DataTypes.DATE,
       allowNull: true,
+      defaultValue: null,
     },
   };
 
