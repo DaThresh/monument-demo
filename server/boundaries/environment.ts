@@ -1,6 +1,6 @@
-import { MissingEnvironmentError } from '../utilities/errors';
 import dotenv from 'dotenv';
-import logger from './logger';
+import { MissingEnvironmentError } from '../utilities/errors';
+import { logger } from './logger';
 dotenv.config();
 
 export type Environment = 'production' | 'stage' | 'qa' | 'development' | 'sandbox';

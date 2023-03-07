@@ -1,5 +1,5 @@
-import winston from 'winston';
 import dotenv from 'dotenv';
+import winston from 'winston';
 dotenv.config();
 
 const logger = winston.createLogger({
@@ -8,4 +8,4 @@ const logger = winston.createLogger({
   transports: [new winston.transports.Console()],
 });
 
-export default logger;
+export { logger };

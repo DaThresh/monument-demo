@@ -5,7 +5,7 @@ import { API, IncomingMessage, ServerResponse } from 'webpack-dev-middleware';
 import { ValidationError } from 'yup';
 import { Controller } from '../controllers/controller';
 import ApiError, { NotFoundError } from '../utilities/errors';
-import logger from './logger';
+import { logger } from './logger';
 
 class Server {
   protected express: Express;

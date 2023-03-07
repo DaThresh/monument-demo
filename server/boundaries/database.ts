@@ -1,5 +1,5 @@
 import { Dialect, Sequelize } from 'sequelize';
-import logger from './logger';
+import { logger } from './logger';
 
 type DatabaseConfig = {
   username: string;
