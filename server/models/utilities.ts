@@ -1,4 +1,5 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, ModelAttributeColumnOptions, ModelStatic } from 'sequelize';
+import { Paranoid } from './paranoid';
 
 export const primaryKeyModelAttributes = {
   type: DataTypes.INTEGER.UNSIGNED,
@@ -8,7 +9,11 @@ export const primaryKeyModelAttributes = {
   unique: true,
 };
 
-export const foreignKeyModelAttributes = {
+export const foreignKeyModelAttributes = (
+  model?: ModelStatic<Paranoid>,
+  allowNull = false
+): ModelAttributeColumnOptions => ({
+  ...(model ? { references: { model } } : {}), // Cannot include key if no model
   type: DataTypes.INTEGER.UNSIGNED,
-  allowNull: false,
-};
+  allowNull,
+});
