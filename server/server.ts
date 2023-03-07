@@ -1,8 +1,8 @@
 import server from './boundaries/api';
 import Database from './boundaries/database';
-import { MissingEnvironmentError } from './utilities/errors';
-import { whichEnv } from './boundaries/env';
+import { whichEnv } from './boundaries/environment';
 import { initAppDBModels } from './models';
+import { MissingEnvironmentError } from './utilities/errors';
 
 if (
   !process.env.DATABASE_HOST ||

@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import { whichEnv } from '../boundaries/env';
+import { whichEnv } from '../boundaries/environment';
 import { Lease } from './Lease';
 import { Location } from './Location';
 import { Tenant } from './Tenant';
