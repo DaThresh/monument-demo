@@ -5,7 +5,7 @@ import { Location } from './Location';
 import { Tenant } from './Tenant';
 import { Unit } from './Unit';
 
-const initAppDBModels = async (sequelize: Sequelize) => {
+export const initMonumentDBModels = async (sequelize: Sequelize) => {
   Location.initModel(sequelize);
   Unit.initModel(sequelize);
   Tenant.initModel(sequelize);
@@ -24,4 +24,4 @@ const initAppDBModels = async (sequelize: Sequelize) => {
   }
 };
 
-export { initAppDBModels };
+export { Location, Unit, Tenant, Lease };

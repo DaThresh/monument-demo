@@ -10,7 +10,7 @@ type DatabaseConfig = {
   dialect?: Dialect;
 };
 
-class Database {
+export class Database {
   protected connection: Sequelize;
   protected options: DatabaseConfig;
 
@@ -45,5 +45,3 @@ class Database {
     });
   }
 }
-
-export default Database;
