@@ -1,4 +1,4 @@
-import { ErrorResponse } from '@shared/interfaces';
+import { ErrorResponse } from '@shared/interfaces/common';
 import express, { Express, NextFunction, Request, Response } from 'express';
 import path from 'path';
 import { API, IncomingMessage, ServerResponse } from 'webpack-dev-middleware';
@@ -23,8 +23,8 @@ class Server {
   }
 
   public registerController = (apiRoute: string, controller: Controller) => {
-    logger.info(`Registered controller with route /api/${apiRoute}`);
-    this.express.use(`/api/${apiRoute}`, controller.getRouter());
+    logger.info(`Registered controller with route /api${apiRoute}`);
+    this.express.use(`/api${apiRoute}`, controller.getRouter());
   };
 
   public registerStatic = async (enableHmr = false) => {
