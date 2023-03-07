@@ -1,23 +1,22 @@
-FROM --platform=linux/amd64 node:18.8-slim
+FROM --platform=linux/amd64 node:18.14-slim
 
 WORKDIR /app
 
-COPY package.json yarn.lock tsconfig.json webpack.common.ts webpack.dev.ts webpack.prod.ts /app/
+COPY package.json pnpm-lock.yaml tsconfig.json webpack.common.ts webpack.dev.ts webpack.prod.ts /app/
 
-RUN yarn install
+RUN npm install -g pnpm
+RUN pnpm install --frozen-lockfile
 
 COPY server server
 COPY client client
 COPY shared shared
 
-RUN yarn build
+RUN pnpm build
 RUN rm -rf ./client
 RUN rm -rf ./server
 RUN rm -rf ./shared
 
-RUN rm -rf node_modules
-RUN yarn install --production --ignore-scripts --prefer-offline
-RUN yarn cache clean
+RUN pnpm prune --prod
 
 ENV PORT 8080
 EXPOSE $PORT
