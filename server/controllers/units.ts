@@ -1,5 +1,4 @@
-import { Unit } from '../models';
-import { NotFoundError } from '../utilities/errors';
+import { Lease, Unit } from '../models';
 import { Controller } from './controller';
 import { createUnitSchema, unitByIdSchema } from './schemas/unit';
 
@@ -10,8 +9,7 @@ unitController.createEndpoint({
   route: '/:unitId/leases',
   successCode: 200,
   inputSchemas: { ...Controller.defaultInputSchema, params: unitByIdSchema },
-  callback: async ({ params }) =>
-    await Unit.findByPk(params.unitId, { rejectOnEmpty: new NotFoundError('Unit not found') }),
+  callback: async ({ params }) => await Lease.findAll({ where: { unitId: params.unitId } }),
 });
 
 unitController.createEndpoint({
