@@ -6,20 +6,19 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { Columns, Heading, Icon, Menu, Section } from 'react-bulma-components';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
-import ToastContext from '../common/contexts/toast';
+import ToastContext from '../../common/contexts/toast';
 
-type LocationDetailsTab = 'dashboard' | 'contacts' | 'debt' | 'cashflow' | 'projections';
+type LocationDetailsTab = 'dashboard' | 'contacts' | 'units' | 'debt' | 'cashflow' | 'projections';
 
 const LocationDetails = () => {
   const { locationId } = useParams();
   const navigate = useNavigate();
   const [location, setLocation] = useState<LocationData | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [tab, setTab] = useState<LocationDetailsTab>('dashboard');
   const { addToast } = useContext(ToastContext);
 
   useEffect(() => {
-    setLoading(true);
     axios
       .get<LocationById.Response>(`/api/locations/${locationId}`)
       .then((response) => {
@@ -48,6 +47,11 @@ const LocationDetails = () => {
               </Menu.List.Item>
               <Menu.List.Item active={tab === 'contacts'} onClick={() => setTab('contacts')}>
                 Contacts
+              </Menu.List.Item>
+            </Menu.List>
+            <Menu.List title='Management'>
+              <Menu.List.Item active={tab === 'units'} onClick={() => setTab('units')}>
+                Units
               </Menu.List.Item>
             </Menu.List>
             <Menu.List title='Finance'>
