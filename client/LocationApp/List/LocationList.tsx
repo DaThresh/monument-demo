@@ -4,11 +4,11 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Level, Section, Table } from 'react-bulma-components';
 import { useNavigate } from 'react-router-dom';
-import ModalContext from '../common/contexts/modal';
-import ToastContext from '../common/contexts/toast';
-import NewLocationModal from './modals/NewLocation';
+import ModalContext from '../../common/contexts/modal';
+import ToastContext from '../../common/contexts/toast';
+import NewLocationModal from '../modals/NewLocation';
 
-const LocationApp: React.FC = () => {
+const LocationList: React.FC = () => {
   const [locations, setLocations] = useState<LocationData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
@@ -94,4 +94,4 @@ const LocationApp: React.FC = () => {
   );
 };
 
-export default LocationApp;
+export default LocationList;
