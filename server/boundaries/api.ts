@@ -19,6 +19,7 @@ class Server {
       logger.http(`Received ${request.method} request at ${request.path}`);
       next();
     });
+    this.express.get('/api/status', (_, response) => response.status(200).end());
     return this;
   }
 
