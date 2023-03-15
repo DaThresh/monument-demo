@@ -50,3 +50,42 @@ export const TextInput: React.FC<{
     </Form.Field>
   );
 };
+
+export const SelectInput: React.FC<{
+  name: string;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  options: Array<{ label: string; value: string }>;
+  value: string;
+  required?: boolean;
+  label?: string;
+  columns?: boolean;
+}> = ({ name, value, options, onChange, label, columns = false, required = false }) => {
+  const formLabel = <Form.Label>{label ?? name}</Form.Label>;
+  const formControl = (
+    <Form.Control>
+      <Form.Select value={value} name={name} onChange={onChange} required={required}>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </Form.Select>
+    </Form.Control>
+  );
+
+  return (
+    <Form.Field>
+      {columns ? (
+        <Columns vCentered>
+          <Columns.Column size='one-fifth'>{formLabel}</Columns.Column>
+          <Columns.Column>{formControl}</Columns.Column>
+        </Columns>
+      ) : (
+        <>
+          {formLabel}
+          {formControl}
+        </>
+      )}
+    </Form.Field>
+  );
+};
