@@ -6,7 +6,7 @@ import { Button, Level, Section, Table } from 'react-bulma-components';
 import { useNavigate } from 'react-router-dom';
 import ModalContext from '../../common/contexts/modal';
 import ToastContext from '../../common/contexts/toast';
-import NewLocationModal from '../modals/NewLocation';
+import NewLocationModal from './modals/NewLocation';
 
 const LocationList: React.FC = () => {
   const [locations, setLocations] = useState<LocationData[]>([]);

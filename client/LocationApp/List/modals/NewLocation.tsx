@@ -10,9 +10,9 @@ import { LocationData } from '@shared/types/location';
 import axios, { AxiosResponse } from 'axios';
 import React, { useContext, useState } from 'react';
 import { Button, Container, Heading } from 'react-bulma-components';
-import { TextInput } from '../../common/components/Forms';
-import ModalContext from '../../common/contexts/modal';
-import ToastContext from '../../common/contexts/toast';
+import { TextInput } from '../../../common/components/Forms';
+import ModalContext from '../../../common/contexts/modal';
+import ToastContext from '../../../common/contexts/toast';
 
 type NewLocationModalProps = {
   addLocation: (location: LocationData) => void;
