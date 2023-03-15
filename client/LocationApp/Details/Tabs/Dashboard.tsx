@@ -1,7 +1,7 @@
 import React from 'react';
 
-const DetailsDashboard = () => {
-  return <>testing</>;
+const Dashboard = () => {
+  return <>Dashboard</>;
 };
 
-export default DetailsDashboard;
+export default Dashboard;

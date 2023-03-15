@@ -1,8 +1,11 @@
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Cashflow from './Details/Tabs/Cashflow';
 import Contacts from './Details/Tabs/Contacts';
-import DetailsDashboard from './Details/Tabs/Dashboard';
-import UnitManagement from './Details/Tabs/UnitManagement';
+import Dashboard from './Details/Tabs/Dashboard';
+import Debt from './Details/Tabs/Debt';
+import Projections from './Details/Tabs/Projections';
+import Units from './Details/Tabs/Units';
 
 const LocationList = React.lazy(() => import('./List/LocationList'));
 const LocationDetails = React.lazy(() => import('./Details/Details'));
@@ -13,9 +16,12 @@ const LocationApp = () => {
       <Routes>
         <Route index element={<LocationList />}></Route>
         <Route path=':locationId' element={<LocationDetails />}>
-          <Route index element={<DetailsDashboard />} />
-          <Route path='units' element={<UnitManagement />} />
+          <Route index element={<Dashboard />} />
+          <Route path='units' element={<Units />} />
           <Route path='contacts' element={<Contacts />} />
+          <Route path='debt' element={<Debt />} />
+          <Route path='cashflow' element={<Cashflow />} />
+          <Route path='projections' element={<Projections />} />
         </Route>
       </Routes>
     </Suspense>
