@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Contacts from './Details/Tabs/Contacts';
 import DetailsDashboard from './Details/Tabs/Dashboard';
 import UnitManagement from './Details/Tabs/UnitManagement';
 
@@ -12,8 +13,9 @@ const LocationApp = () => {
       <Routes>
         <Route index element={<LocationList />}></Route>
         <Route path=':locationId' element={<LocationDetails />}>
-          <Route path='units' element={<UnitManagement />} />
           <Route index element={<DetailsDashboard />} />
+          <Route path='units' element={<UnitManagement />} />
+          <Route path='contacts' element={<Contacts />} />
         </Route>
       </Routes>
     </Suspense>
