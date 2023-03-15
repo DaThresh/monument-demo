@@ -4,7 +4,7 @@ import { logger } from './logger';
 dotenv.config();
 
 const environments = ['production', 'stage', 'qa', 'development', 'sandbox', 'test'] as const;
-export type Environment = typeof environments[number];
+export type Environment = (typeof environments)[number];
 
 export const whichEnv = (): Environment => {
   const validEnvironments: string[] = [...environments];
@@ -24,6 +24,7 @@ export const environment = {
     username: process.env.DATABASE_USERNAME ?? 'DB_USERNAME',
     password: process.env.DATABASE_PASSWORD ?? 'DB_PASSWORD',
     port: +(process.env.DATABASE_PORT ?? 3306),
+    socketPath: process.env.DATABASE_SOCKET_PATH,
   },
 };
 

@@ -8,6 +8,7 @@ type DatabaseConfig = {
   host: string;
   port: number;
   dialect?: Dialect;
+  socketPath?: string;
 };
 
 export class Database {
@@ -21,6 +22,7 @@ export class Database {
       port: options.port,
       dialect: options.dialect || 'mysql',
       logging: (sql, milliseconds) => logger.verbose(`${sql} ${milliseconds}ms`),
+      dialectOptions: { socketPath: options.socketPath },
       benchmark: true,
     });
 
