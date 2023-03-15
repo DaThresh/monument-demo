@@ -34,13 +34,13 @@ const LocationDetails = () => {
 
   return !loading && location ? (
     <Section>
-      <Icon onClick={() => navigate('/locations')} style={{ cursor: 'pointer' }}>
-        <FontAwesomeIcon icon={faArrowLeft} size={'sm'} />
-      </Icon>
-      <Heading weight='bold'>{location.name}</Heading>
-      <Heading subtitle>{location.address}</Heading>
       <Columns>
         <Columns.Column size='one-fifth'>
+          <Icon onClick={() => navigate('/locations')} style={{ cursor: 'pointer' }}>
+            <FontAwesomeIcon icon={faArrowLeft} size={'sm'} />
+          </Icon>
+          <Heading weight='bold'>{location.name}</Heading>
+          <Heading subtitle>{location.address}</Heading>
           <Menu>
             <Menu.List title='General'>
               <Menu.List.Item
