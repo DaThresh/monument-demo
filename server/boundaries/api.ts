@@ -15,6 +15,7 @@ class Server {
     logger.info(`Launching ApiServer using Express`);
     this.express = express();
     this.express.use(express.json());
+    this.express.disable('etag');
     this.express.use((request, _, next) => {
       logger.http(`Received ${request.method} request at ${request.path}`);
       next();
