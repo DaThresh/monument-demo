@@ -21,3 +21,10 @@ export namespace CreateLocation {
   }
   export type Response = LocationData;
 }
+
+export namespace DeleteLocation {
+  export interface Params {
+    locationId: number;
+  }
+  export type Response = undefined;
+}

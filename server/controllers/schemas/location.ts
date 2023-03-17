@@ -1,4 +1,4 @@
-import { CreateLocation, LocationById } from '@shared/interfaces/locations';
+import { CreateLocation, DeleteLocation, LocationById } from '@shared/interfaces/locations';
 import { number, object, ObjectSchema, string } from 'yup';
 
 export const createLocationSchema: ObjectSchema<CreateLocation.Body> = object({
@@ -10,5 +10,9 @@ export const createLocationSchema: ObjectSchema<CreateLocation.Body> = object({
 });
 
 export const locationByIdSchema: ObjectSchema<LocationById.Params> = object({
+  locationId: number().required(),
+});
+
+export const deleteLocationSchema: ObjectSchema<DeleteLocation.Params> = object({
   locationId: number().required(),
 });
