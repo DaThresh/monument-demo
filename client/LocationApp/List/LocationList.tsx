@@ -6,6 +6,7 @@ import { Button, Level, Section, Table } from 'react-bulma-components';
 import { useNavigate } from 'react-router-dom';
 import ModalContext from '../../common/contexts/modal';
 import ToastContext from '../../common/contexts/toast';
+import { DeleteLocationModal } from './modals/DeleteLocation';
 import NewLocationModal from './modals/NewLocation';
 
 const LocationList: React.FC = () => {
@@ -44,6 +45,13 @@ const LocationList: React.FC = () => {
     openModal(<NewLocationModal addLocation={addLocation} />);
   };
 
+  const removeLocation = (event: React.MouseEvent<HTMLButtonElement>, index: number) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const location = locations[index];
+    openModal(<DeleteLocationModal location={location} refresh={refresh} />);
+  };
+
   useEffect(() => {
     fetch();
   }, []);
@@ -68,13 +76,13 @@ const LocationList: React.FC = () => {
         <thead>
           <tr>
             <th>Name</th>
-            <th># of Units</th>
+            <th>Address</th>
             <th>City, State</th>
-            <th>Cashflow</th>
+            <th align='right'>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {locations.map((location) => (
+          {locations.map((location, index) => (
             <tr
               key={location.id}
               onClick={() => openLocation(location.id)}
@@ -85,7 +93,12 @@ const LocationList: React.FC = () => {
               <td>
                 {location.city}, {location.state}
               </td>
-              <td>{location.postalCode}</td>
+              <td align='right'>
+                <Button
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => removeLocation(e, index)}
+                  remove
+                />
+              </td>
             </tr>
           ))}
         </tbody>
